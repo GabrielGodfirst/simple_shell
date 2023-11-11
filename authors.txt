@@ -1,7 +1,7 @@
-This is a file which contains the names of the collaborators of the simple shell project.
 
-#;Collaborators
+This is a file which contains the names of the collaborators of the simple shell project
+.
+#Collaborators
 
 Gabriel Godfirst
 Rebecca Essandoh
-
