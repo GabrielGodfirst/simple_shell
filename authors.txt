@@ -3,5 +3,5 @@ This is a file which contains the names of the collaborators of the simple shell
 .
 #Collaborators
 
-Gabriel Godfirst
-Rebecca Essandoh
+Gabriel Godfirst Nwoko
+ Rebecca Essandoh
