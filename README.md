@@ -31,7 +31,7 @@ This is a simple shell project created to demonstrate a basic shell interface. I
 
 1. Run the shell.
     ```
-    ./simple-shell
+    ./hsh
     ```
 2. Enter commands when prompted.
 
