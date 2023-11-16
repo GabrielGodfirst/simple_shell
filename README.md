@@ -24,7 +24,7 @@ This is a simple shell project created to demonstrate a basic shell interface. I
     ```
 2. Compile the program.
     ```
-    make
+    gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
     ```
 
 ### Usage
