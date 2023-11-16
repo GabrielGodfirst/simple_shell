@@ -25,7 +25,7 @@ void parse_args(char *command, char *args[]);
 void execute_command(char *args[]);
 int tokenize_input(char *input, char *args[]);
 void handle_path(char *command, char *args[]);
-void handle_exit(void);
+void handle_exit(char *status);
 void handle_env(void);
 void handle_cd(char *args[]);
 void handle_semicolon(char *commands);

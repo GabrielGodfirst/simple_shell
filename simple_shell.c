@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
 * main - Simple UNIX command line interpreter.
 *
@@ -16,19 +17,18 @@
 * and more.
 */
 
-
 int main(void)
 {
-	char *command;
-	char *args[MAX_NUM_ARGS];
+        char *command;
+        char *args[MAX_NUM_ARGS];
 
-	while (1)
-	{
-		printf("$ ");
-		command = read_line();
-		parse_args(command, args);
-		execute_command(args);
-	}
+        while (1)
+        {
+                printf("#cisfun$  ");
+                command = read_line();
+                parse_args(command, args);
+        }
 
-	return 0;
+        return 0;
+
 }
