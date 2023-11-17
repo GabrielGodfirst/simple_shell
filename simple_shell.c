@@ -35,10 +35,6 @@ void hsh_loop(void)
 		
 		buffer[strcspn(buffer, "\n")] = '\0';
 
-        
-
-        
-
         if (pid == -1) {
             perror("fork");
             exit(EXIT_FAILURE);
@@ -60,4 +56,3 @@ int main(void)
 	hsh_loop();
 	return 0;
 }
-
