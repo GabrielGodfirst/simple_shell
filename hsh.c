@@ -5,8 +5,11 @@
 #include <unistd.h>
 #include <string.h>
 
+#define MAX_BUFFER_SIZE 512
+
 /**
  * hsh_loop - Simple UNIX command line interpreter.
+ * main - runs the loop
  * Return: 0 on successful execution, -1 on failure.
  * This program acts as a basic shell,
  * allowing users to input commands,
@@ -19,26 +22,38 @@
  * and more.
  */
 
-	char *command;
-	char *args[MAX_NUM_ARGS];
+void hsh_loop(void)
+{
+	char buffer[MAX_BUFFER_SIZE];
+	pid_t pid = fork();
 
 	while (1)
 	{
-		printf("#cisfun$  ");
-		command = read_line();
-
-
-		/* Check for exit condition*/
-		if (strcmp(command, "exit\n") == 0)
+		printf("#cisfun$ ");
+		if (!fgets(buffer, MAX_BUFFER_SIZE, stdin))
 		{
-			free(command);  /* Free memory before exiting*/
+			printf("\n");
 			break;
 		}
 
-		parse_args(command, args);
-		free(command);  /* Free memory after parsing*/
+		buffer[strcspn(buffer, "\n")] = '\0';
+
+		if (pid == -1)
+		{
+			perror("fork");
+			exit(EXIT_FAILURE);
+		}
+		else if (pid == 0)
+		{
+			if (execlp(buffer, buffer, NULL) == -1)
+			{
+				perror("exec");
+				exit(EXIT_FAILURE);
+			}
+		}
+		else
+		{
+			waitpid(pid, NULL, 0);
+		}
 	}
-
-
-	return 0;
 }

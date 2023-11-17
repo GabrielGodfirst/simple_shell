@@ -1,5 +1,5 @@
-#ifndef SIMPLE_SHELL_H
-#define SIMPLE_SHELL_H
+#ifndef MAIN_H
+#define MAIN_H
 
 /* Required Libraries */
 #include <stdio.h>
@@ -34,6 +34,10 @@ void handle_alias(char *args[]);
 void handle_variables(void);
 void handle_comments(void);
 void handle_file_input(char *filename);
+int set_environment_variable(char *variable, char *value);
+int unset_environment_variable(char *variable);
+int change_directory(char *directory);
+void hsh_loop(void);
+void execute_commands(char *commands);
 
-#endif /* SIMPLE_SHELL_H */
-
+#endif /* MAIN_H */
