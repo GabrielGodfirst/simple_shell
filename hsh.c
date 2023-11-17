@@ -1,8 +1,8 @@
-
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 #include <string.h>
 
 #define BUFFER_SIZE 1024
@@ -30,35 +30,27 @@ void hsh_loop(void)
 	{
 		printf("#cisfun$ ");
 		if (!fgets(buffer, BUFFER_SIZE, stdin))
-		{
-			printf("\n");
 			break;
-		}
-		
+
 		buffer[strcspn(buffer, "\n")] = '\0';
 
-        
-
-        
-
-        if (pid == -1) {
-            perror("fork");
-            exit(EXIT_FAILURE);
-        } else if (pid == 0) {
-           
-            if (execlp(buffer, buffer, NULL) == -1) {
-                perror("exec");
-                exit(EXIT_FAILURE);
-            }
-        } else {
-            
-            waitpid(pid, NULL, 0);
-        }
-    }
+		if (strcmp(buffer, "exit") == 0)
+			break;
+		if (pid == -1)
+		{
+			perror("fork");
+			exit(EXIT_FAILURE);
+		}
+		else if (pid == 0)
+		{
+			execlp(buffer, buffer, NULL);
+			perror("exec");
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			waitpid(pid, NULL, 0);
+		}
+	}
+	return (0);
 }
-
-int main(void) {
-    hsh_loop();
-    return 0;
-}
-
