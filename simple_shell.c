@@ -19,16 +19,28 @@
 
 int main(void)
 {
-        char *command;
-        char *args[MAX_NUM_ARGS];
 
-        while (1)
-        {
-                printf("#cisfun$  ");
-                command = read_line();
-                parse_args(command, args);
-        }
+	char *command;
+	char *args[MAX_NUM_ARGS];
 
-        return 0;
+	while (1)
+	{
+		printf("#cisfun$  ");
+		command = read_line();
+
+
+		/* Check for exit condition*/
+		if (strcmp(command, "exit\n") == 0)
+		{
+			free(command);  /* Free memory before exiting*/
+			break;
+		}
+
+		parse_args(command, args);
+		free(command);  /* Free memory after parsing*/
+	}
+
+
+	return 0;
 
 }
