@@ -14,13 +14,15 @@
 
 /* Macros */
 #define MAX_INPUT_SIZE 1024
-#define MAX_ARG_SIZE 64
+#define MAX_ARGS_SIZE 64
 #define MAX_NUM_ARGS 32
 
 /* Function Declarations */
 void display_prompt(void);
 int read_input(char *buffer);
-void execute_command(char *command);
+char *read_line(void);
+void parse_args(char *command, char *args[]);
+void execute_command(char *args[]);
 int tokenize_input(char *input, char *args[]);
 void handle_path(char *command, char *args[]);
 void handle_exit(char *status);

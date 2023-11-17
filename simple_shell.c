@@ -5,8 +5,6 @@
 #include <unistd.h>
 #include <string.h>
 
-#define BUFFER_SIZE 1024
-
 /**
  * hsh_loop - Simple UNIX command line interpreter.
  * Return: 0 on successful execution, -1 on failure.
@@ -57,8 +55,9 @@ void hsh_loop(void)
     }
 }
 
-int main(void) {
-    hsh_loop();
-    return 0;
+int main(void)
+{
+	hsh_loop();
+	return 0;
 }
 

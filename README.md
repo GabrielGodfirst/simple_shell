@@ -1,4 +1,4 @@
-
+Hi, welcome to our simple shell project. Here is everything you may want to know about this project.  
 
 # Simple Shell Project
 
@@ -24,14 +24,14 @@ This is a simple shell project created to demonstrate a basic shell interface. I
     ```
 2. Compile the program.
     ```
-    make
+    gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
     ```
 
 ### Usage
 
 1. Run the shell.
     ```
-    ./simple-shell
+    ./hsh
     ```
 2. Enter commands when prompted.
 
@@ -65,4 +65,4 @@ Special thanks to the Alx team for inspiration, guidance, or any other acknowled
 
 ## Support
 
-For any issues or questions, please contact godfirstgabriel@gmail.com and (write your email here)
+For any issues or questions, please contact godfirstgabriel@gmail.com and rebeckietaessandoh@gmail.com
