@@ -31,5 +31,5 @@ char *read_line(void)
 
 	strcpy(result, buffer);
 
-	return result;
+	return (result);
 }

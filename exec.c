@@ -1,21 +1,20 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include "main.h"
-/**
- * execute_commands - executed command statement
- * @main:Entry point
- * @char: character of the function
- */
 
+/**
+* execute_commands - Execute command statements
+* @commands: The command string to execute
+*/
 
 void execute_commands(char *commands)
 {
+
 	char *token;
-	pid_t pid = fork();
+	pid_t pid;
 
 	while ((token = strtok(commands, ";")))
 	{
@@ -26,45 +25,34 @@ void execute_commands(char *commands)
 		char *end = token + strlen(token) - 1;
 
 		while (end > token && (*end == ' ' || *end == '\t' || *end == '\n'))
-		{
-			end--;
-		}
+	{
+
+		end--;
+	}
 		end[1] = '\0';
+
+		pid = fork();
 
 		if (pid == -1)
 		{
+			perror("fork");
 			exit(EXIT_FAILURE);
-		}
-		else if (pid == 0)
-		{
-			if (system(token) == -1)
+
+			else if (pid == 0)
 			{
-				exit(EXIT_FAILURE);
+				if (system(token) == -1)
+				{
+					perror("system");
+					exit(EXIT_FAILURE);
+				}
+				exit(EXIT_SUCCESS);
+
 			}
-			exit(EXIT_SUCCESS);
+			else
+			{
+				waitpid(pid, NULL, 0);
+			}
+
+			commands = NULL;
 		}
-		else
-		{
-			waitpid(pid, NULL, 0);
-		}
-
-		commands = NULL;
-	}
 }
-
-int main(void)
-{
-	char input[1024];
-
-	printf("Enter commands separated by ';':\n");
-	fgets(input, sizeof(input), stdin);
-	char *newline = strchr(input, '\n')
-
-	if (newline != NULL)
-	{
-		*newline = '\0';
-	}
-	execute_commands(input);
-	return (0);
-}
-
